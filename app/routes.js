@@ -6,8 +6,15 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html');
+	app.all('/*', function(req, res, next) {
+		if (req.url.split('/')[1] !== 'views') {
+			res.render('index');
+		} else {
+			next();
+		}
 	});
 
+	app.get('/views/:partial', function(req, res, next) {
+		res.render('views/' + req.params.partial);
+	});
 };
