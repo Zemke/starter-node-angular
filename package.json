@@ -2,10 +2,18 @@
   "name": "starter-node-angular",
   "main": "server.js",
   "dependencies": {
-    "express" : "~4.5.1",
-	"mongoose" : "~3.8.0",
-	"body-parser" : "~1.4.2",
-	"method-override" : "~2.0.2",
-    "jade": "~1.8.1"
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "jade": "~1.8.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.4.2",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-uglify": "^1.0.2"
   }
 }
