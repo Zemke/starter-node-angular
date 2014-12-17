@@ -18,3 +18,5 @@ public/libs
 
 dist
 *~
+*.sublime-project
+*.sublime-workspace
