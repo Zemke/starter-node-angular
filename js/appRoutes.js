@@ -4,17 +4,17 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'views/home',
+			templateUrl: 'partials/home',
 			controller: 'MainController'
 		})
 
 		.when('/nerds', {
-			templateUrl: 'views/nerd',
+			templateUrl: 'partials/nerd',
 			controller: 'NerdController'
 		})
 
 		.when('/geeks', {
-			templateUrl: 'views/geek',
+			templateUrl: 'partials/geek',
 			controller: 'GeekController'	
 		});
 

@@ -12,11 +12,15 @@ logs
 results
 
 npm-debug.log
-node_modules
+node_modules/
 
-public/libs
+public/libs/
+public/js/js.js
+public/css/css.css
 
 dist
+
+
 *~
 *.sublime-project
 *.sublime-workspace
