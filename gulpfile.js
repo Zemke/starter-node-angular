@@ -17,9 +17,12 @@ var publicDirs = {
   img: 'public/img/'
 };
 
+var bowerComponentsDir = baseDirs.app + 'bower_components/';
+
+// Bower components first!
 var appFiles = {
-  js: [baseDirs.app + 'js/**/*.js'],
-  css: [baseDirs.app + 'css/**/*.css'],
+  js: [bowerComponentsDir + '**/*.min.js', baseDirs.app + 'js/**/*.js'],
+  css: [bowerComponentsDir + '**/*.min.css', baseDirs.app + 'css/**/*.css'],
   index: [baseDirs.app + 'views/index.jade']
 };
 
