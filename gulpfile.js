@@ -4,6 +4,8 @@ var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var nodemon = require('gulp-nodemon');
 var livereload = require('gulp-livereload');
+var minifyCss = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
 
 var baseDirs = {
   app: './',
@@ -81,3 +83,23 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['dev:concatjs', 'dev:concatcss', 'nodemon', 'watch']);
+gulp.task('dist', ['dev:concatjs', 'dev:concatcss', 'dist:minifycss', 'dist:minifyjs']);
+
+gulp.task('dist:minifycss', function() {
+  return gulp.src(baseDirs.app + publicDirs.css + concatFilenames.css)
+    .pipe(minifyCss())
+    .pipe(gulp.dest(baseDirs.dist + publicDirs.css));
+});
+
+gulp.task('dist:minifyjs', function() {
+  return gulp.src(baseDirs.app + publicDirs.js + concatFilenames.js)
+    .pipe(uglify())
+    .pipe(gulp.dest(baseDirs.dist + publicDirs.js));
+});
+
+
+
+
+
+
+
