@@ -1,19 +1,15 @@
 module.exports = function(app) {
-
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
-
-	// frontend routes =========================================================
-	// route to handle all angular requests
+	
 	app.all('/*', function(req, res, next) {
-		if (req.url.split('/')[1] !== 'partials') {
-			res.render('index');
-		} else {
+		var arbitraryUrls = ['partials', 'api'];
+		if (arbitraryUrls.indexOf(req.url.split('/')[1]) > -1) {
 			next();
+		} else {
+			res.render('index');
 		}
 	});
 
-	app.get('/partials/:partial*', function(req, res, next) {
+	app.get('/partials/*', function(req, res, next) {
 		res.render('.' + req.path);
 	});
+};
