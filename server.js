@@ -27,6 +27,7 @@ app.set('view engine', 'jade');
 
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
+require('./app/api')(app);
 
 // start app ===============================================
 app.listen(port);	
