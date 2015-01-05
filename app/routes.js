@@ -14,7 +14,6 @@ module.exports = function(app) {
 		}
 	});
 
-	app.get('/partials/:partial', function(req, res, next) {
-		res.render('partials/' + req.params.partial);
+	app.get('/partials/:partial*', function(req, res, next) {
+		res.render('.' + req.path);
 	});
-};
