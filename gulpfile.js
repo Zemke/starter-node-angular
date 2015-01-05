@@ -35,8 +35,17 @@ var concatFilenames = {
 
 var startupScript = 'server.js';
 
+var sysDirs = [
+  baseDirs.app + 'app/**/*.js',
+  baseDirs.app + 'config/**/*.js',
+  baseDirs.app + 'views/**/*.jade',
+  baseDirs.app + 'config/**/*.js',
+  baseDirs.app + 'views/**/*.jade',
+  baseDirs.app + 'node_modules/'
+];
+
 gulp.task('clean', function() {
-  return gulp.src(baseDirs.dist).pipe(clean());
+  return gulp.src(baseDirs.dist, {read: false}).pipe(clean());
 });
 
 gulp.task('dev:concatjs', function () {
@@ -83,7 +92,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['dev:concatjs', 'dev:concatcss', 'nodemon', 'watch']);
-gulp.task('dist', ['dev:concatjs', 'dev:concatcss', 'dist:minifycss', 'dist:minifyjs']);
+gulp.task('dist', ['dev:concatjs', 'dev:concatcss', 'dist:minifycss', 'dist:minifyjs', 'dist:copy']);
 
 gulp.task('dist:minifycss', function() {
   return gulp.src(baseDirs.app + publicDirs.css + concatFilenames.css)
@@ -97,9 +106,12 @@ gulp.task('dist:minifyjs', function() {
     .pipe(gulp.dest(baseDirs.dist + publicDirs.js));
 });
 
+gulp.task('dist:copy', function() {
+  // server.js
+  gulp.src(baseDirs.app + '/' + startupScript)
+    .pipe(gulp.dest(baseDirs.dist));
 
-
-
-
-
-
+  // sysDirs
+  gulp.src(sysDirs, {cwd: baseDirs.app + '**'})
+    .pipe(gulp.dest(baseDirs.dist));
+});
