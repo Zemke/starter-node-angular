@@ -26,3 +26,6 @@ Run `gulp dist`. Like dev, plus JS and CSS are minified and anything you need wi
 - Jade Template Engine
 - Gulp
 - Mongoose
+
+## Laravel and AngularJS Starter Application
+Also check out my [Zemke/starter-laravel-angular](https://github.com/Zemke/starter-laravel-angular) project featuring Laravel 5 and AngularJS with token-based authentication and many great features to get yourself kick-started.
